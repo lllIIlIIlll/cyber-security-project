@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseForbidden
 
 from .models import BlogPost
@@ -10,6 +11,10 @@ def index(request):
   return render(request, 'blog/index.html', {'blog_posts': blog_posts})
 
 @login_required
+#-------------------------------------------------------
+# Comment out the line below to fix the csrf flaw
+@csrf_exempt
+#-------------------------------------------------------
 def create_post(request):
   if request.method == 'POST':
     content = request.POST.get('content')
