@@ -30,7 +30,8 @@
       <div>
         <p>{{ post.author }}</p>
         <p>{{ post.created_at }}</p>
-        <p>{{ post.content }}</p>
+        <!--Remove "|safe" from the line below to fix the XSS-flaw -->
+        <p>{{ post.content|safe }}</p>
         {% if user == post.author or user.is_superuser%}
         <form method="post" action="{% url 'delete_post' post.id %}">
         {% csrf_token %}
