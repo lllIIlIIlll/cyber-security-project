@@ -31,9 +31,11 @@ def delete_post(request, post_id):
   if request.method == 'POST':
     user = request.user
     post = BlogPost.objects.get(id=post_id)
-    
-    if post.author != user and not user.is_superuser:
-      return HttpResponseForbidden("Not allowed")
+    #---------------------------------------------------
+    # Uncomment the check below to fix the broken access control flaw
+    #if post.author != user and not user.is_superuser:
+    #  return HttpResponseForbidden("Not allowed")
+    #---------------------------------------------------
 
     post.delete()
     
