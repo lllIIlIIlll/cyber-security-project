@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, HttpResponseForbidden
+from django.db import connection
 
 from .models import BlogPost
 
@@ -40,3 +41,15 @@ def delete_post(request, post_id):
     post.delete()
     
   return redirect(index)
+
+def search(request):
+    search_query = request.GET.get('search')
+    #--------------------------------------------------------------
+    # Correct/safe method of getting search results.
+    # Uncomment the line below to fix the sql-injection flaw and remember to comment out the unsafe method.
+    #result = BlogPost.objects.filter(content__contains=search_query)
+    #--------------------------------------------------------------
+    # Unsafe method that allows SQL-injection
+    # Comment out the line below to fix the SQL-injection flaw
+    result = BlogPost.objects.raw(f"SELECT * FROM blog_blogpost WHERE content LIKE '%%{search_query}%%'")
+    return render(request, 'blog/index.html', {'blog_posts': result})
