@@ -56,4 +56,6 @@ def search(request):
 
 def profile(request):
   user = request.user
-  return render(request, 'blog/profile.html', {'user_data': user})
+  # Comment out the line below and remove ", 'session_id': session_id" from the render object.
+  session_id = request.session.session_key
+  return render(request, 'blog/profile.html', {'user_data': user, 'session_id': session_id})

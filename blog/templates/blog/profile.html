@@ -8,6 +8,6 @@
   <body>
     <p>welcome to your profile, {{ user_data.username }}</p>
     <!-- To fix the sensitive data exposure flaw comment out the line below-->
-    <p>session id: {{ request.GET.sessionid }}</p>
+    <p>session id: {{ session_id }}</p>
   </body>
 </html>
