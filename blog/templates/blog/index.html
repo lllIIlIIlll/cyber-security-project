@@ -7,6 +7,9 @@
   </head>
   <body>
     <h2>blog</h2>
+    <!-- To fix the sensitive data exposure flaw remove -->
+    <!-- this: ?sessionid={{ request.session.session_key }} from the line below -->
+    <a href="{% url 'profile' %}?sessionid={{ request.session.session_key }}">profile</a>
     <form method="get" action="{% url 'search' %}">
       <label for="search">search:</label>
       <input type="text" name="search" id="search">

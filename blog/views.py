@@ -53,3 +53,7 @@ def search(request):
     # Comment out the line below to fix the SQL-injection flaw
     result = BlogPost.objects.raw(f"SELECT * FROM blog_blogpost WHERE content LIKE '%%{search_query}%%'")
     return render(request, 'blog/index.html', {'blog_posts': result})
+
+def profile(request):
+  user = request.user
+  return render(request, 'blog/profile.html', {'user_data': user})
