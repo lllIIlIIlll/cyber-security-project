@@ -36,7 +36,7 @@ python3 manage.py createsuperuser
 
 https://github.com/lllIIlIIlll/cyber-security-project/blob/b688093595ce52d06873aa821fa0ca6040e41a24/blog/views.py#L17
 
-\*_Description:_
+**Description:**
 
 Cross-site request forgery (CSRF) flaw. The backend does not verify the origin of POST requests. This allows the attacker to post on behalf of an authenticated user. The flaw happens because CSRF protection is disabled from the view handling post creation using @csrf_exempt.
 
