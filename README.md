@@ -4,6 +4,8 @@
 
 **The flaws in the project are from the OWASP top 10, 2017 edition.**
 
+---
+
 ### INSTRUCTIONS
 
 ##### How to create a basic user:
