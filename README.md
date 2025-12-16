@@ -78,7 +78,6 @@ Cross-site scripting (XSS) flaw. The post creation form does not sanitize the us
 <script>
   alert('XSS in action')
 </script>
-.
 ```
 
 3. You should immediately see the alert pop up.
